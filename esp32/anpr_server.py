@@ -80,7 +80,7 @@ def detect_plate(image_path):
     if image is None:
         return ""
 
-    results = modelddsf(
+    results = model(
         image,
         stream=False,
         verbose=False
