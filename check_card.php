@@ -1,4 +1,4 @@
-?php
+<?php
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -21,7 +21,6 @@ if(isset($_GET['uid'])){
     // Consultar si existe y está activo
     $sql = "SELECT * FROM rfid_cards WHERE UPPER(TRIM(card_uid))='$uid' AND access_status='ACTIVE'";
     $result = $conn->query($sql);
-
     if ($result && $result->num_rows > 0) {
         echo "ACCESS_GRANTED";
         $status = "GRANTED";
@@ -34,6 +33,7 @@ if(isset($_GET['uid'])){
     $log_sql = "INSERT INTO access_log (card_uid, access_status) VALUES ('$uid', '$status')";
     $conn->query($log_sql);
 }
-
 $conn->close();
 ?>
+
+
