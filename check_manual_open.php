@@ -29,11 +29,21 @@ $conn->set_charset("utf8mb4");
 
 $conn->begin_transaction();
 
+// =====================================================
+// BUSCAR EL COMANDO PENDIENTE MÁS ANTIGUO
+// =====================================================
+
 $sql = "
-    SELECT id
+    SELECT
+        id,
+        command_type
     FROM barrier_commands
     WHERE status = 'PENDING'
-      AND command_type = 'OPEN'
+      AND command_type IN (
+          'OPEN',
+          'HOLD_OPEN',
+          'RESUME_AUTO'
+      )
     ORDER BY id ASC
     LIMIT 1
     FOR UPDATE
@@ -51,6 +61,10 @@ if (!$resultado) {
     exit;
 }
 
+// =====================================================
+// SIN COMANDOS
+// =====================================================
+
 if ($resultado->num_rows === 0) {
     $conn->commit();
     $conn->close();
@@ -59,9 +73,20 @@ if ($resultado->num_rows === 0) {
     exit;
 }
 
+// =====================================================
+// OBTENER COMANDO
+// =====================================================
+
 $fila = $resultado->fetch_assoc();
 
 $commandId = (int) $fila["id"];
+$commandType = strtoupper(
+    trim($fila["command_type"])
+);
+
+// =====================================================
+// MARCAR COMO EJECUTADO
+// =====================================================
 
 $stmt = $conn->prepare("
     UPDATE barrier_commands
@@ -98,10 +123,14 @@ if (!$stmt->execute()) {
     exit;
 }
 
+// =====================================================
+// RESPONDER AL ESP32
+// =====================================================
+
 if ($stmt->affected_rows === 1) {
     $conn->commit();
 
-    echo "OPEN:" . $commandId;
+    echo $commandType . ":" . $commandId;
 } else {
     $conn->rollback();
 

@@ -30,6 +30,10 @@
             color: #0f172a;
         }
 
+        /* ============================================
+           SIDEBAR
+        ============================================ */
+
         .sidebar {
             width: 250px;
             min-height: 100vh;
@@ -65,6 +69,8 @@
             color: white;
         }
 
+        /* ACCESO MANUAL */
+
         .sidebar .btn-acceso-manual {
             margin-top: 30px;
             background: #16a34a;
@@ -76,6 +82,82 @@
         .sidebar .btn-acceso-manual:hover {
             background: #15803d;
         }
+
+        /* ============================================
+           CONTROL BARRERA
+        ============================================ */
+
+        .control-barrera {
+            margin-top: 18px;
+            padding-top: 18px;
+            border-top: 1px solid #334155;
+        }
+
+        .control-barrera-titulo {
+            margin-bottom: 10px;
+            color: #94a3b8;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .sidebar .btn-barrera {
+            margin-bottom: 8px;
+            padding: 11px;
+            background: #2563eb;
+            color: white;
+            font-weight: 600;
+            text-align: center;
+            transition: 0.2s;
+        }
+
+        .sidebar .btn-barrera:hover {
+            background: #1d4ed8;
+        }
+
+        .sidebar .btn-barrera.modo-abierto {
+            background: #dc2626;
+        }
+
+        .sidebar .btn-barrera.modo-abierto:hover {
+            background: #b91c1c;
+        }
+
+        .sidebar .btn-barrera:disabled {
+            background: #475569;
+            cursor: wait;
+            opacity: 0.8;
+        }
+
+        .estado-barrera {
+            padding: 9px 10px;
+            border-radius: 6px;
+            background: #1e293b;
+            color: #cbd5e1;
+            text-align: center;
+            font-size: 12px;
+            line-height: 1.4;
+        }
+
+        .estado-barrera.auto {
+            border-left: 4px solid #22c55e;
+        }
+
+        .estado-barrera.abierta {
+            border-left: 4px solid #ef4444;
+            background: #3f1d1d;
+            color: #fecaca;
+            font-weight: 600;
+        }
+
+        .estado-barrera.error {
+            border-left: 4px solid #f59e0b;
+        }
+
+        /* ============================================
+           CONTENIDO PRINCIPAL
+        ============================================ */
 
         .main {
             flex: 1;
@@ -90,6 +172,55 @@
             gap: 20px;
             margin-bottom: 20px;
         }
+
+        /* ============================================
+           ALERTA BARRERA ABIERTA
+        ============================================ */
+
+        .alerta-barrera {
+            display: none;
+            margin-bottom: 20px;
+            padding: 15px 18px;
+            border: 1px solid #fecaca;
+            border-radius: 8px;
+            background: #fef2f2;
+            color: #991b1b;
+        }
+
+        .alerta-barrera.visible {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .alerta-barrera strong {
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        .alerta-barrera small {
+            color: #b91c1c;
+        }
+
+        .alerta-barrera button {
+            flex-shrink: 0;
+            padding: 9px 14px;
+            border: none;
+            border-radius: 6px;
+            background: #dc2626;
+            color: white;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .alerta-barrera button:hover {
+            background: #b91c1c;
+        }
+
+        /* ============================================
+           CARDS
+        ============================================ */
 
         .cards {
             display: grid;
@@ -118,6 +249,10 @@
             font-size: 30px;
         }
 
+        /* ============================================
+           TOOLBAR
+        ============================================ */
+
         .toolbar {
             display: flex;
             flex-wrap: wrap;
@@ -143,6 +278,10 @@
             color: #64748b;
             font-size: 13px;
         }
+
+        /* ============================================
+           TABLA
+        ============================================ */
 
         .table-container {
             overflow-x: auto;
@@ -216,6 +355,10 @@
             color: #64748b;
         }
 
+        /* ============================================
+           MENSAJES
+        ============================================ */
+
         .mensaje {
             display: none;
             margin-bottom: 12px;
@@ -241,9 +384,9 @@
             color: #1e40af;
         }
 
-        /* =========================
+        /* ============================================
            MODALES
-        ========================= */
+        ============================================ */
 
         .modal {
             display: none;
@@ -354,6 +497,39 @@
             cursor: not-allowed;
         }
 
+        /* ============================================
+           MODAL CONTROL BARRERA
+        ============================================ */
+
+        .icono-barrera {
+            margin-bottom: 10px;
+            font-size: 42px;
+            text-align: center;
+        }
+
+        .advertencia-barrera {
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 6px;
+            background: #fef2f2;
+            color: #991b1b;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .btn-peligro {
+            background: #dc2626;
+            color: white;
+        }
+
+        .btn-peligro:hover {
+            background: #b91c1c;
+        }
+
+        /* ============================================
+           RESPONSIVE
+        ============================================ */
+
         @media (max-width: 1050px) {
             .cards {
                 grid-template-columns:
@@ -397,11 +573,20 @@
             .modal-botones button {
                 width: 100%;
             }
+
+            .alerta-barrera.visible {
+                flex-direction: column;
+                align-items: flex-start;
+            }
         }
     </style>
 </head>
 
 <body>
+
+<!-- ==================================================
+     SIDEBAR
+================================================== -->
 
 <div class="sidebar">
 
@@ -430,7 +615,39 @@
         + Acceso manual
     </button>
 
+    <!-- ============================================
+         NUEVO: CONTROL DE BARRERA
+    ============================================ -->
+
+    <div class="control-barrera">
+
+        <div class="control-barrera-titulo">
+            Control de barrera
+        </div>
+
+        <button
+            type="button"
+            id="btnControlBarrera"
+            class="btn-barrera"
+            onclick="abrirModalControlBarrera()"
+        >
+            🔓 Mantener barrera abierta
+        </button>
+
+        <div
+            id="estadoBarreraSidebar"
+            class="estado-barrera auto"
+        >
+            Modo automático activo
+        </div>
+
+    </div>
+
 </div>
+
+<!-- ==================================================
+     PRINCIPAL
+================================================== -->
 
 <div class="main">
 
@@ -441,6 +658,39 @@
         <span id="hora"></span>
 
     </div>
+
+    <!-- ============================================
+         NUEVO: ALERTA MODO BARRERA ABIERTA
+    ============================================ -->
+
+    <div
+        id="alertaBarreraAbierta"
+        class="alerta-barrera"
+    >
+
+        <div>
+            <strong>
+                ⚠ Barrera abierta permanentemente
+            </strong>
+
+            <small>
+                El control automático de cierre se encuentra
+                suspendido hasta restablecer el modo automático.
+            </small>
+        </div>
+
+        <button
+            type="button"
+            onclick="solicitarRestablecerAutomatico()"
+        >
+            Restablecer modo automático
+        </button>
+
+    </div>
+
+    <!-- ============================================
+         CARDS
+    ============================================ -->
 
     <div class="cards">
 
@@ -466,7 +716,14 @@
 
     </div>
 
-    <div id="mensaje" class="mensaje"></div>
+    <div
+        id="mensaje"
+        class="mensaje"
+    ></div>
+
+    <!-- ============================================
+         FILTROS
+    ============================================ -->
 
     <div class="toolbar">
 
@@ -528,6 +785,10 @@
 
     </div>
 
+    <!-- ============================================
+         TABLA
+    ============================================ -->
+
     <div class="table-container">
 
         <table>
@@ -552,11 +813,14 @@
 
 </div>
 
-<!-- ================================================
+<!-- ==================================================
      MODAL CLASIFICAR / CORREGIR
-================================================ -->
+================================================== -->
 
-<div id="modalClasificar" class="modal">
+<div
+    id="modalClasificar"
+    class="modal"
+>
 
     <div class="modal-contenido">
 
@@ -651,15 +915,20 @@
 
 </div>
 
-<!-- ================================================
+<!-- ==================================================
      MODAL ACCESO MANUAL
-================================================ -->
+================================================== -->
 
-<div id="modalAccesoManual" class="modal">
+<div
+    id="modalAccesoManual"
+    class="modal"
+>
 
     <div class="modal-contenido">
 
-        <h3>Autorizar acceso manual</h3>
+        <h3>
+            Autorizar acceso manual
+        </h3>
 
         <p class="descripcion-modal">
             Utilizá esta opción para visitantes,
@@ -803,10 +1072,105 @@
 
 </div>
 
+<!-- ==================================================
+     NUEVO: MODAL CONTROL BARRERA
+================================================== -->
+
+<div
+    id="modalControlBarrera"
+    class="modal"
+>
+
+    <div class="modal-contenido">
+
+        <div
+            id="iconoModalBarrera"
+            class="icono-barrera"
+        >
+            🔓
+        </div>
+
+        <h3 id="tituloModalBarrera">
+            Mantener barrera abierta
+        </h3>
+
+        <p
+            id="descripcionModalBarrera"
+            class="descripcion-modal"
+        >
+            Esta opción mantendrá la barrera abierta
+            permanentemente hasta que se restablezca
+            el modo automático.
+        </p>
+
+        <div
+            id="advertenciaModalBarrera"
+            class="advertencia-barrera"
+        >
+            ⚠ Mientras este modo esté activo,
+            la barrera no se cerrará automáticamente
+            después del paso de los vehículos.
+        </div>
+
+        <div class="campo">
+
+            <label for="responsableBarrera">
+                Responsable
+            </label>
+
+            <input
+                type="text"
+                id="responsableBarrera"
+                placeholder="Nombre del responsable"
+                maxlength="100"
+            >
+
+            <small>
+                Se registrará quién solicitó el cambio
+                de modo.
+            </small>
+
+        </div>
+
+        <div class="modal-botones">
+
+            <button
+                type="button"
+                class="btn-cancelar"
+                onclick="cerrarModalControlBarrera()"
+            >
+                Cancelar
+            </button>
+
+            <button
+                type="button"
+                id="btnConfirmarControlBarrera"
+                class="btn-peligro"
+                onclick="confirmarControlBarrera()"
+            >
+                Mantener abierta
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
 <script>
 
 let datosGlobal = [];
 let registroSeleccionado = null;
+
+/*
+ * Estado del sistema de barrera.
+ *
+ * AUTO
+ * HOLD_OPEN
+ */
+let barrierMode = "AUTO";
+
+let barrierRequestInProgress = false;
 
 // =====================================================
 // HORA
@@ -818,22 +1182,37 @@ function actualizarHora() {
 }
 
 actualizarHora();
-setInterval(actualizarHora, 1000);
+
+setInterval(
+    actualizarHora,
+    1000
+);
 
 // =====================================================
 // MENSAJES
 // =====================================================
 
-function mostrarMensaje(texto, tipo) {
+function mostrarMensaje(
+    texto,
+    tipo
+) {
     const mensaje =
-        document.getElementById("mensaje");
+        document.getElementById(
+            "mensaje"
+        );
 
-    mensaje.innerText = texto;
-    mensaje.className = `mensaje ${tipo}`;
+    mensaje.innerText =
+        texto;
+
+    mensaje.className =
+        `mensaje ${tipo}`;
 
     setTimeout(() => {
-        mensaje.className = "mensaje";
-        mensaje.innerText = "";
+        mensaje.className =
+            "mensaje";
+
+        mensaje.innerText =
+            "";
     }, 6000);
 }
 
@@ -841,22 +1220,30 @@ function mostrarMensaje(texto, tipo) {
 // FECHAS
 // =====================================================
 
-function parseFechaMySQL(fechaTexto) {
+function parseFechaMySQL(
+    fechaTexto
+) {
     if (!fechaTexto) {
         return null;
     }
 
     const partes =
-        fechaTexto.trim().split(" ");
+        fechaTexto
+            .trim()
+            .split(" ");
 
     const fecha =
-        partes[0].split("-");
+        partes[0]
+            .split("-");
 
-    const hora = partes[1]
-        ? partes[1].split(":")
-        : ["0", "0", "0"];
+    const hora =
+        partes[1]
+            ? partes[1].split(":")
+            : ["0", "0", "0"];
 
-    if (fecha.length !== 3) {
+    if (
+        fecha.length !== 3
+    ) {
         return null;
     }
 
@@ -870,7 +1257,10 @@ function parseFechaMySQL(fechaTexto) {
     );
 }
 
-function esMismoDia(fecha1, fecha2) {
+function esMismoDia(
+    fecha1,
+    fecha2
+) {
     return (
         fecha1.getFullYear() ===
             fecha2.getFullYear() &&
@@ -883,36 +1273,49 @@ function esMismoDia(fecha1, fecha2) {
     );
 }
 
-function perteneceAlPeriodo(fechaTexto, periodo) {
+function perteneceAlPeriodo(
+    fechaTexto,
+    periodo
+) {
     const fecha =
-        parseFechaMySQL(fechaTexto);
+        parseFechaMySQL(
+            fechaTexto
+        );
 
     if (!fecha) {
         return false;
     }
 
-    const ahora = new Date();
+    const ahora =
+        new Date();
 
-    if (periodo === "todo") {
+    if (
+        periodo === "todo"
+    ) {
         return true;
     }
 
-    if (periodo === "hoy") {
+    if (
+        periodo === "hoy"
+    ) {
         return esMismoDia(
             fecha,
             ahora
         );
     }
 
-    if (periodo === "semana") {
-        const inicio = new Date(
-            ahora.getFullYear(),
-            ahora.getMonth(),
-            ahora.getDate() - 6,
-            0,
-            0,
-            0
-        );
+    if (
+        periodo === "semana"
+    ) {
+        const inicio =
+            new Date(
+                ahora.getFullYear(),
+                ahora.getMonth(),
+                ahora.getDate() - 6,
+                0,
+                0,
+                0
+            );
 
         return (
             fecha >= inicio &&
@@ -920,7 +1323,9 @@ function perteneceAlPeriodo(fechaTexto, periodo) {
         );
     }
 
-    if (periodo === "mes") {
+    if (
+        periodo === "mes"
+    ) {
         return (
             fecha.getFullYear() ===
                 ahora.getFullYear() &&
@@ -937,7 +1342,9 @@ function perteneceAlPeriodo(fechaTexto, periodo) {
 // ESCAPAR TEXTO
 // =====================================================
 
-function escaparHTML(texto) {
+function escaparHTML(
+    texto
+) {
     if (
         texto === null ||
         texto === undefined ||
@@ -947,27 +1354,49 @@ function escaparHTML(texto) {
     }
 
     const div =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
 
-    div.innerText = texto;
+    div.innerText =
+        texto;
 
     return div.innerHTML;
 }
 
-function escaparAtributo(texto) {
-    return String(texto ?? "")
-        .replace(/\\/g, "\\\\")
-        .replace(/'/g, "\\'")
-        .replace(/\r/g, "")
-        .replace(/\n/g, " ");
+function escaparAtributo(
+    texto
+) {
+    return String(
+        texto ?? ""
+    )
+        .replace(
+            /\\/g,
+            "\\\\"
+        )
+        .replace(
+            /'/g,
+            "\\'"
+        )
+        .replace(
+            /\r/g,
+            ""
+        )
+        .replace(
+            /\n/g,
+            " "
+        );
 }
 
 // =====================================================
 // GRUPOS
 // =====================================================
 
-function nombreGrupo(grupo) {
+function nombreGrupo(
+    grupo
+) {
     const grupos = {
+
         MOVIL_ANDE:
             "Móvil ANDE",
 
@@ -996,15 +1425,21 @@ function nombreGrupo(grupo) {
 // =====================================================
 
 async function cargarDatos() {
-    try {
-        const respuesta = await fetch(
-            "get_logs.php",
-            {
-                cache: "no-store"
-            }
-        );
 
-        if (!respuesta.ok) {
+    try {
+
+        const respuesta =
+            await fetch(
+                "get_logs.php",
+                {
+                    cache:
+                        "no-store"
+                }
+            );
+
+        if (
+            !respuesta.ok
+        ) {
             throw new Error(
                 "No se pudieron cargar los registros."
             );
@@ -1013,20 +1448,30 @@ async function cargarDatos() {
         const data =
             await respuesta.json();
 
-        if (!Array.isArray(data)) {
+        if (
+            !Array.isArray(data)
+        ) {
             throw new Error(
                 data.mensaje ||
                 "Respuesta inválida del servidor."
             );
         }
 
-        datosGlobal = data;
+        datosGlobal =
+            data;
 
-        actualizarStats(data);
+        actualizarStats(
+            data
+        );
+
         aplicarFiltros();
 
-    } catch (error) {
-        console.error(error);
+    }
+    catch (error) {
+
+        console.error(
+            error
+        );
 
         document.getElementById(
             "tabla"
@@ -1047,24 +1492,30 @@ async function cargarDatos() {
 // ESTADÍSTICAS
 // =====================================================
 
-function actualizarStats(data) {
-    const ahora = new Date();
+function actualizarStats(
+    data
+) {
+    const ahora =
+        new Date();
 
     const registrosHoy =
-        data.filter(row => {
-            const fecha =
-                parseFechaMySQL(
-                    row.access_time
-                );
+        data.filter(
+            row => {
 
-            return (
-                fecha &&
-                esMismoDia(
-                    fecha,
-                    ahora
-                )
-            );
-        });
+                const fecha =
+                    parseFechaMySQL(
+                        row.access_time
+                    );
+
+                return (
+                    fecha &&
+                    esMismoDia(
+                        fecha,
+                        ahora
+                    )
+                );
+            }
+        );
 
     const permitidosHoy =
         registrosHoy.filter(
@@ -1082,19 +1533,23 @@ function actualizarStats(data) {
 
     document.getElementById(
         "totalGeneral"
-    ).innerText = data.length;
+    ).innerText =
+        data.length;
 
     document.getElementById(
         "totalHoy"
-    ).innerText = registrosHoy.length;
+    ).innerText =
+        registrosHoy.length;
 
     document.getElementById(
         "grantedHoy"
-    ).innerText = permitidosHoy;
+    ).innerText =
+        permitidosHoy;
 
     document.getElementById(
         "pendientes"
-    ).innerText = pendientes;
+    ).innerText =
+        pendientes;
 }
 
 // =====================================================
@@ -1102,51 +1557,69 @@ function actualizarStats(data) {
 // =====================================================
 
 function aplicarFiltros() {
-    const busqueda = document
-        .getElementById("busqueda")
-        .value
-        .trim()
-        .toLowerCase();
 
-    const grupo = document
-        .getElementById("grupo")
-        .value;
+    const busqueda =
+        document
+            .getElementById(
+                "busqueda"
+            )
+            .value
+            .trim()
+            .toLowerCase();
 
-    const periodo = document
-        .getElementById("periodo")
-        .value;
+    const grupo =
+        document
+            .getElementById(
+                "grupo"
+            )
+            .value;
+
+    const periodo =
+        document
+            .getElementById(
+                "periodo"
+            )
+            .value;
 
     const filtrado =
-        datosGlobal.filter(row => {
-            const texto = `
-                ${row.card_uid || ""}
-                ${row.owner_name || ""}
-                ${row.plate_number || ""}
-                ${row.visitor_name || ""}
-                ${row.authorized_by || ""}
-            `.toLowerCase();
+        datosGlobal.filter(
+            row => {
 
-            const coincideBusqueda =
-                texto.includes(busqueda);
+                const texto = `
+                    ${row.card_uid || ""}
+                    ${row.owner_name || ""}
+                    ${row.plate_number || ""}
+                    ${row.visitor_name || ""}
+                    ${row.authorized_by || ""}
+                `.toLowerCase();
 
-            const coincideGrupo =
-                grupo === "todo" ||
-                row.vehicle_group === grupo;
+                const coincideBusqueda =
+                    texto.includes(
+                        busqueda
+                    );
 
-            const coincidePeriodo =
-                perteneceAlPeriodo(
-                    row.access_time,
-                    periodo
+                const coincideGrupo =
+                    grupo === "todo" ||
+                    row.vehicle_group ===
+                        grupo;
+
+                const coincidePeriodo =
+                    perteneceAlPeriodo(
+                        row.access_time,
+                        periodo
+                    );
+
+                return (
+                    coincideBusqueda &&
+                    coincideGrupo &&
+                    coincidePeriodo
                 );
+            }
+        );
 
-            return (
-                coincideBusqueda &&
-                coincideGrupo &&
-                coincidePeriodo
-            );
-        });
-
-    renderTabla(filtrado);
+    renderTabla(
+        filtrado
+    );
 
     document.getElementById(
         "resultadoFiltro"
@@ -1158,13 +1631,20 @@ function aplicarFiltros() {
 // TABLA
 // =====================================================
 
-function renderTabla(data) {
+function renderTabla(
+    data
+) {
     const tbody =
-        document.getElementById("tabla");
+        document.getElementById(
+            "tabla"
+        );
 
-    tbody.innerHTML = "";
+    tbody.innerHTML =
+        "";
 
-    if (data.length === 0) {
+    if (
+        data.length === 0
+    ) {
         tbody.innerHTML = `
             <tr>
                 <td
@@ -1179,111 +1659,119 @@ function renderTabla(data) {
         return;
     }
 
-    data.forEach(row => {
-        let claseEstado = "";
+    data.forEach(
+        row => {
 
-        if (
-            row.access_status ===
-            "ACCESS_GRANTED"
-        ) {
-            claseEstado = "granted";
-        }
-        else if (
-            row.access_status ===
-            "ACCESS_DENIED"
-        ) {
-            claseEstado = "denied";
-        }
-        else {
-            claseEstado = "system-error";
-        }
+            let claseEstado =
+                "";
 
-        const claseGrupo =
-            row.vehicle_group ===
-            "PENDIENTE_REVISION"
-                ? "pendiente"
-                : row.group_source === "MANUAL"
-                    ? "manual"
-                    : "";
+            if (
+                row.access_status ===
+                "ACCESS_GRANTED"
+            ) {
+                claseEstado =
+                    "granted";
+            }
+            else if (
+                row.access_status ===
+                "ACCESS_DENIED"
+            ) {
+                claseEstado =
+                    "denied";
+            }
+            else {
+                claseEstado =
+                    "system-error";
+            }
 
-        const textoBoton =
-            row.vehicle_group ===
-            "PENDIENTE_REVISION"
-                ? "Clasificar"
-                : "Corregir";
+            const claseGrupo =
+                row.vehicle_group ===
+                "PENDIENTE_REVISION"
+                    ? "pendiente"
+                    : row.group_source ===
+                        "MANUAL"
+                        ? "manual"
+                        : "";
 
-        const dueñoMostrado =
-            row.visitor_name ||
-            row.owner_name;
+            const textoBoton =
+                row.vehicle_group ===
+                "PENDIENTE_REVISION"
+                    ? "Clasificar"
+                    : "Corregir";
 
-        tbody.innerHTML += `
-            <tr>
+            const dueñoMostrado =
+                row.visitor_name ||
+                row.owner_name;
 
-                <td>
-                    ${escaparHTML(
-                        row.card_uid
-                    )}
-                </td>
+            tbody.innerHTML += `
+                <tr>
 
-                <td>
-                    ${escaparHTML(
-                        dueñoMostrado
-                    )}
-                </td>
+                    <td>
+                        ${escaparHTML(
+                            row.card_uid
+                        )}
+                    </td>
 
-                <td>
-                    ${escaparHTML(
-                        row.plate_number
-                    )}
-                </td>
+                    <td>
+                        ${escaparHTML(
+                            dueñoMostrado
+                        )}
+                    </td>
 
-                <td class="${claseGrupo}">
-                    ${escaparHTML(
-                        nombreGrupo(
-                            row.vehicle_group
-                        )
-                    )}
-                </td>
+                    <td>
+                        ${escaparHTML(
+                            row.plate_number
+                        )}
+                    </td>
 
-                <td class="${claseEstado}">
-                    ${escaparHTML(
-                        row.access_status
-                    )}
-                </td>
-
-                <td>
-                    ${escaparHTML(
-                        row.access_time
-                    )}
-                </td>
-
-                <td>
-                    <button
-                        type="button"
-                        class="btn-clasificar"
-                        onclick="abrirModalClasificar(
-                            ${Number(row.id)},
-                            '${escaparAtributo(
-                                row.plate_number
-                            )}',
-                            '${escaparAtributo(
+                    <td class="${claseGrupo}">
+                        ${escaparHTML(
+                            nombreGrupo(
                                 row.vehicle_group
-                            )}',
-                            '${escaparAtributo(
-                                row.reviewed_by
-                            )}',
-                            '${escaparAtributo(
-                                row.group_source
-                            )}'
-                        )"
-                    >
-                        ${textoBoton}
-                    </button>
-                </td>
+                            )
+                        )}
+                    </td>
 
-            </tr>
-        `;
-    });
+                    <td class="${claseEstado}">
+                        ${escaparHTML(
+                            row.access_status
+                        )}
+                    </td>
+
+                    <td>
+                        ${escaparHTML(
+                            row.access_time
+                        )}
+                    </td>
+
+                    <td>
+                        <button
+                            type="button"
+                            class="btn-clasificar"
+                            onclick="abrirModalClasificar(
+                                ${Number(row.id)},
+                                '${escaparAtributo(
+                                    row.plate_number
+                                )}',
+                                '${escaparAtributo(
+                                    row.vehicle_group
+                                )}',
+                                '${escaparAtributo(
+                                    row.reviewed_by
+                                )}',
+                                '${escaparAtributo(
+                                    row.group_source
+                                )}'
+                            )"
+                        >
+                            ${textoBoton}
+                        </button>
+                    </td>
+
+                </tr>
+            `;
+        }
+    );
 }
 
 // =====================================================
@@ -1297,14 +1785,16 @@ function abrirModalClasificar(
     revisadoPor,
     fuenteGrupo
 ) {
-    registroSeleccionado = id;
+    registroSeleccionado =
+        id;
 
     const esCorreccion =
         fuenteGrupo === "MANUAL" ||
         (
             grupoActual !==
                 "PENDIENTE_REVISION" &&
-            grupoActual !== ""
+            grupoActual !==
+                ""
         );
 
     document.getElementById(
@@ -1323,7 +1813,8 @@ function abrirModalClasificar(
 
     document.getElementById(
         "registroMatricula"
-    ).value = matricula || "";
+    ).value =
+        matricula || "";
 
     document.getElementById(
         "grupoManual"
@@ -1335,28 +1826,36 @@ function abrirModalClasificar(
 
     document.getElementById(
         "revisadoPor"
-    ).value = revisadoPor || "";
+    ).value =
+        revisadoPor || "";
 
     document
         .getElementById(
             "modalClasificar"
         )
         .classList
-        .add("abierto");
+        .add(
+            "abierto"
+        );
 }
 
 function cerrarModalClasificar() {
-    registroSeleccionado = null;
+
+    registroSeleccionado =
+        null;
 
     document
         .getElementById(
             "modalClasificar"
         )
         .classList
-        .remove("abierto");
+        .remove(
+            "abierto"
+        );
 }
 
 async function guardarClasificacion() {
+
     const grupo =
         document.getElementById(
             "grupoManual"
@@ -1370,7 +1869,9 @@ async function guardarClasificacion() {
             .value
             .trim();
 
-    if (!registroSeleccionado) {
+    if (
+        !registroSeleccionado
+    ) {
         mostrarMensaje(
             "No se seleccionó un registro.",
             "error"
@@ -1398,23 +1899,32 @@ async function guardarClasificacion() {
     }
 
     try {
-        const respuesta = await fetch(
-            "update_group.php",
-            {
-                method: "POST",
 
-                headers: {
-                    "Content-Type":
-                        "application/json"
-                },
+        const respuesta =
+            await fetch(
+                "update_group.php",
+                {
+                    method:
+                        "POST",
 
-                body: JSON.stringify({
-                    id: registroSeleccionado,
-                    grupo: grupo,
-                    revisado_por: revisadoPor
-                })
-            }
-        );
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body:
+                        JSON.stringify({
+                            id:
+                                registroSeleccionado,
+
+                            grupo:
+                                grupo,
+
+                            revisado_por:
+                                revisadoPor
+                        })
+                }
+            );
 
         const texto =
             await respuesta.text();
@@ -1423,8 +1933,12 @@ async function guardarClasificacion() {
 
         try {
             resultado =
-                JSON.parse(texto);
-        } catch {
+                JSON.parse(
+                    texto
+                );
+        }
+        catch {
+
             console.error(
                 "Respuesta del servidor:",
                 texto
@@ -1437,7 +1951,8 @@ async function guardarClasificacion() {
 
         if (
             !respuesta.ok ||
-            resultado.ok === false
+            resultado.ok ===
+                false
         ) {
             throw new Error(
                 resultado.mensaje ||
@@ -1455,8 +1970,12 @@ async function guardarClasificacion() {
 
         await cargarDatos();
 
-    } catch (error) {
-        console.error(error);
+    }
+    catch (error) {
+
+        console.error(
+            error
+        );
 
         mostrarMensaje(
             error.message,
@@ -1470,6 +1989,7 @@ async function guardarClasificacion() {
 // =====================================================
 
 function abrirModalAccesoManual() {
+
     limpiarFormularioAccesoManual();
 
     document
@@ -1477,7 +1997,9 @@ function abrirModalAccesoManual() {
             "modalAccesoManual"
         )
         .classList
-        .add("abierto");
+        .add(
+            "abierto"
+        );
 
     document
         .getElementById(
@@ -1487,15 +2009,19 @@ function abrirModalAccesoManual() {
 }
 
 function cerrarModalAccesoManual() {
+
     document
         .getElementById(
             "modalAccesoManual"
         )
         .classList
-        .remove("abierto");
+        .remove(
+            "abierto"
+        );
 }
 
 function limpiarFormularioAccesoManual() {
+
     document.getElementById(
         "visitanteManual"
     ).value = "";
@@ -1526,6 +2052,7 @@ function limpiarFormularioAccesoManual() {
 // =====================================================
 
 async function autorizarAccesoManual() {
+
     const visitante =
         document
             .getElementById(
@@ -1550,7 +2077,10 @@ async function autorizarAccesoManual() {
             .value
             .trim()
             .toUpperCase()
-            .replace(/\s+/g, "");
+            .replace(
+                /\s+/g,
+                ""
+            );
 
     const grupo =
         document
@@ -1576,6 +2106,7 @@ async function autorizarAccesoManual() {
             .trim();
 
     if (!visitante) {
+
         mostrarMensaje(
             "Ingresá el nombre del visitante.",
             "error"
@@ -1585,6 +2116,7 @@ async function autorizarAccesoManual() {
     }
 
     if (!grupo) {
+
         mostrarMensaje(
             "Seleccioná el grupo del vehículo.",
             "error"
@@ -1594,6 +2126,7 @@ async function autorizarAccesoManual() {
     }
 
     if (!motivo) {
+
         mostrarMensaje(
             "Ingresá el motivo del ingreso.",
             "error"
@@ -1603,6 +2136,7 @@ async function autorizarAccesoManual() {
     }
 
     if (!responsable) {
+
         mostrarMensaje(
             "Ingresá el nombre de quien autoriza.",
             "error"
@@ -1611,13 +2145,23 @@ async function autorizarAccesoManual() {
         return;
     }
 
-    const confirmar = confirm(
-        "¿Confirmás la apertura manual de la barrera?\n\n" +
-        "Visitante: " + visitante + "\n" +
-        "Matrícula: " +
-        (matricula || "No visible") + "\n" +
-        "Motivo: " + motivo
-    );
+    const confirmar =
+        confirm(
+            "¿Confirmás la apertura manual de la barrera?\n\n" +
+            "Visitante: " +
+            visitante +
+            "\n" +
+
+            "Matrícula: " +
+            (
+                matricula ||
+                "No visible"
+            ) +
+            "\n" +
+
+            "Motivo: " +
+            motivo
+        );
 
     if (!confirmar) {
         return;
@@ -1628,32 +2172,48 @@ async function autorizarAccesoManual() {
             "btnAutorizarManual"
         );
 
-    boton.disabled = true;
-    boton.innerText = "Generando orden...";
+    boton.disabled =
+        true;
+
+    boton.innerText =
+        "Generando orden...";
 
     try {
-        const respuesta = await fetch(
-            "manual_access.php",
-            {
-                method: "POST",
 
-                headers: {
-                    "Content-Type":
-                        "application/json"
-                },
+        const respuesta =
+            await fetch(
+                "manual_access.php",
+                {
+                    method:
+                        "POST",
 
-                body: JSON.stringify({
-                    visitor_name: visitante,
-                    visited_person:
-                        personaVisitada,
-                    reason: motivo,
-                    plate_number: matricula,
-                    vehicle_group: grupo,
-                    requested_by:
-                        responsable
-                })
-            }
-        );
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body:
+                        JSON.stringify({
+                            visitor_name:
+                                visitante,
+
+                            visited_person:
+                                personaVisitada,
+
+                            reason:
+                                motivo,
+
+                            plate_number:
+                                matricula,
+
+                            vehicle_group:
+                                grupo,
+
+                            requested_by:
+                                responsable
+                        })
+                }
+            );
 
         const texto =
             await respuesta.text();
@@ -1661,9 +2221,15 @@ async function autorizarAccesoManual() {
         let resultado;
 
         try {
+
             resultado =
-                JSON.parse(texto);
-        } catch {
+                JSON.parse(
+                    texto
+                );
+
+        }
+        catch {
+
             console.error(
                 "Respuesta manual_access.php:",
                 texto
@@ -1676,8 +2242,10 @@ async function autorizarAccesoManual() {
 
         if (
             !respuesta.ok ||
-            resultado.ok === false
+            resultado.ok ===
+                false
         ) {
+
             throw new Error(
                 resultado.mensaje ||
                 "No se pudo generar la apertura manual."
@@ -1694,19 +2262,506 @@ async function autorizarAccesoManual() {
 
         await cargarDatos();
 
-    } catch (error) {
-        console.error(error);
+    }
+    catch (error) {
+
+        console.error(
+            error
+        );
 
         mostrarMensaje(
             error.message,
             "error"
         );
 
-    } finally {
-        boton.disabled = false;
+    }
+    finally {
+
+        boton.disabled =
+            false;
 
         boton.innerText =
             "Tomar foto y autorizar";
+    }
+}
+
+// =====================================================
+// NUEVO:
+// CONSULTAR ESTADO DE BARRERA
+// =====================================================
+
+async function cargarEstadoBarrera() {
+
+    try {
+
+        const respuesta =
+            await fetch(
+                "barrier_status.php",
+                {
+                    cache:
+                        "no-store"
+                }
+            );
+
+        if (
+            !respuesta.ok
+        ) {
+            throw new Error(
+                "No se pudo consultar el estado de la barrera."
+            );
+        }
+
+        const data =
+            await respuesta.json();
+
+        if (
+            data.ok === false
+        ) {
+            throw new Error(
+                data.error ||
+                "Estado inválido."
+            );
+        }
+
+        barrierMode =
+            data.mode ||
+            "AUTO";
+
+        actualizarInterfazBarrera();
+
+    }
+    catch (error) {
+
+        console.error(
+            "Error barrier_status.php:",
+            error
+        );
+
+        const estado =
+            document.getElementById(
+                "estadoBarreraSidebar"
+            );
+
+        estado.className =
+            "estado-barrera error";
+
+        estado.innerText =
+            "No se pudo consultar el estado";
+    }
+}
+
+// =====================================================
+// ACTUALIZAR INTERFAZ BARRERA
+// =====================================================
+
+function actualizarInterfazBarrera() {
+
+    const boton =
+        document.getElementById(
+            "btnControlBarrera"
+        );
+
+    const estado =
+        document.getElementById(
+            "estadoBarreraSidebar"
+        );
+
+    const alerta =
+        document.getElementById(
+            "alertaBarreraAbierta"
+        );
+
+    if (
+        barrierMode ===
+        "HOLD_OPEN"
+    ) {
+
+        boton.innerText =
+            "🔒 Restablecer modo automático";
+
+        boton.classList.add(
+            "modo-abierto"
+        );
+
+        estado.className =
+            "estado-barrera abierta";
+
+        estado.innerText =
+            "Barrera abierta permanentemente";
+
+        alerta.classList.add(
+            "visible"
+        );
+    }
+    else {
+
+        boton.innerText =
+            "🔓 Mantener barrera abierta";
+
+        boton.classList.remove(
+            "modo-abierto"
+        );
+
+        estado.className =
+            "estado-barrera auto";
+
+        estado.innerText =
+            "Modo automático activo";
+
+        alerta.classList.remove(
+            "visible"
+        );
+    }
+}
+
+// =====================================================
+// MODAL CONTROL BARRERA
+// =====================================================
+
+function abrirModalControlBarrera() {
+
+    const titulo =
+        document.getElementById(
+            "tituloModalBarrera"
+        );
+
+    const descripcion =
+        document.getElementById(
+            "descripcionModalBarrera"
+        );
+
+    const icono =
+        document.getElementById(
+            "iconoModalBarrera"
+        );
+
+    const boton =
+        document.getElementById(
+            "btnConfirmarControlBarrera"
+        );
+
+    const responsable =
+        document.getElementById(
+            "responsableBarrera"
+        );
+
+    responsable.value =
+        "";
+
+    if (
+        barrierMode ===
+        "HOLD_OPEN"
+    ) {
+
+        icono.innerText =
+            "🔒";
+
+        titulo.innerText =
+            "Restablecer modo automático";
+
+        descripcion.innerText =
+            "Esta acción cerrará la barrera y restablecerá el funcionamiento automático mediante RFID y matrícula.";
+
+        boton.innerText =
+            "Restablecer automático";
+
+        boton.className =
+            "btn-guardar";
+
+    }
+    else {
+
+        icono.innerText =
+            "🔓";
+
+        titulo.innerText =
+            "Mantener barrera abierta";
+
+        descripcion.innerText =
+            "Esta opción mantendrá la barrera abierta permanentemente hasta que se restablezca el modo automático.";
+
+        boton.innerText =
+            "Mantener abierta";
+
+        boton.className =
+            "btn-peligro";
+    }
+
+    document
+        .getElementById(
+            "modalControlBarrera"
+        )
+        .classList
+        .add(
+            "abierto"
+        );
+
+    setTimeout(
+        () => {
+            responsable.focus();
+        },
+        100
+    );
+}
+
+function cerrarModalControlBarrera() {
+
+    document
+        .getElementById(
+            "modalControlBarrera"
+        )
+        .classList
+        .remove(
+            "abierto"
+        );
+}
+
+// =====================================================
+// CONFIRMAR CONTROL DE BARRERA
+// =====================================================
+
+async function confirmarControlBarrera() {
+
+    if (
+        barrierRequestInProgress
+    ) {
+        return;
+    }
+
+    const responsable =
+        document
+            .getElementById(
+                "responsableBarrera"
+            )
+            .value
+            .trim();
+
+    if (!responsable) {
+
+        mostrarMensaje(
+            "Ingresá el nombre del responsable.",
+            "error"
+        );
+
+        return;
+    }
+
+    const action =
+        barrierMode ===
+            "HOLD_OPEN"
+            ? "RESUME_AUTO"
+            : "HOLD_OPEN";
+
+    let mensajeConfirmacion;
+
+    if (
+        action ===
+        "HOLD_OPEN"
+    ) {
+
+        mensajeConfirmacion =
+            "¿Confirmás mantener la barrera abierta permanentemente?\n\n" +
+            "El cierre automático quedará suspendido.";
+
+    }
+    else {
+
+        mensajeConfirmacion =
+            "¿Confirmás restablecer el modo automático?\n\n" +
+            "La barrera recibirá la orden de cierre.";
+    }
+
+    const confirmar =
+        confirm(
+            mensajeConfirmacion
+        );
+
+    if (!confirmar) {
+        return;
+    }
+
+    await enviarComandoBarrera(
+        action,
+        responsable
+    );
+}
+
+// =====================================================
+// RESTABLECER DESDE ALERTA
+// =====================================================
+
+function solicitarRestablecerAutomatico() {
+
+    if (
+        barrierMode !==
+        "HOLD_OPEN"
+    ) {
+        return;
+    }
+
+    abrirModalControlBarrera();
+}
+
+// =====================================================
+// ENVIAR COMANDO AL SERVIDOR
+// =====================================================
+
+async function enviarComandoBarrera(
+    action,
+    responsable
+) {
+
+    barrierRequestInProgress =
+        true;
+
+    const botonSidebar =
+        document.getElementById(
+            "btnControlBarrera"
+        );
+
+    const botonModal =
+        document.getElementById(
+            "btnConfirmarControlBarrera"
+        );
+
+    botonSidebar.disabled =
+        true;
+
+    botonModal.disabled =
+        true;
+
+    botonModal.innerText =
+        "Enviando orden...";
+
+    try {
+
+        const respuesta =
+            await fetch(
+                "barrier_control.php",
+                {
+                    method:
+                        "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body:
+                        JSON.stringify({
+                            action:
+                                action,
+
+                            requested_by:
+                                responsable
+                        })
+                }
+            );
+
+        const texto =
+            await respuesta.text();
+
+        let resultado;
+
+        try {
+
+            resultado =
+                JSON.parse(
+                    texto
+                );
+
+        }
+        catch {
+
+            console.error(
+                "Respuesta barrier_control.php:",
+                texto
+            );
+
+            throw new Error(
+                "El servidor devolvió una respuesta inválida."
+            );
+        }
+
+        if (
+            !respuesta.ok ||
+            resultado.ok ===
+                false
+        ) {
+
+            throw new Error(
+                resultado.mensaje ||
+                resultado.error ||
+                "No se pudo enviar la orden a la barrera."
+            );
+        }
+
+        barrierMode =
+            resultado.mode ||
+            (
+                action ===
+                    "HOLD_OPEN"
+                    ? "HOLD_OPEN"
+                    : "AUTO"
+            );
+
+        actualizarInterfazBarrera();
+
+        cerrarModalControlBarrera();
+
+        if (
+            action ===
+            "HOLD_OPEN"
+        ) {
+
+            mostrarMensaje(
+                "Orden enviada. La barrera permanecerá abierta.",
+                "info"
+            );
+
+        }
+        else {
+
+            mostrarMensaje(
+                "Orden enviada. Se restablecerá el modo automático.",
+                "exito"
+            );
+        }
+
+        /*
+         * Volvemos a consultar después de unos segundos
+         * para sincronizar la interfaz con la base de datos.
+         */
+        setTimeout(
+            cargarEstadoBarrera,
+            2000
+        );
+
+    }
+    catch (error) {
+
+        console.error(
+            error
+        );
+
+        mostrarMensaje(
+            error.message,
+            "error"
+        );
+
+    }
+    finally {
+
+        barrierRequestInProgress =
+            false;
+
+        botonSidebar.disabled =
+            false;
+
+        botonModal.disabled =
+            false;
+
+        actualizarInterfazBarrera();
     }
 }
 
@@ -1715,25 +2770,35 @@ async function autorizarAccesoManual() {
 // =====================================================
 
 document
-    .getElementById("busqueda")
+    .getElementById(
+        "busqueda"
+    )
     .addEventListener(
         "input",
         aplicarFiltros
     );
 
 document
-    .getElementById("grupo")
+    .getElementById(
+        "grupo"
+    )
     .addEventListener(
         "change",
         aplicarFiltros
     );
 
 document
-    .getElementById("periodo")
+    .getElementById(
+        "periodo"
+    )
     .addEventListener(
         "change",
         aplicarFiltros
     );
+
+// =====================================================
+// CERRAR MODAL CLASIFICAR
+// =====================================================
 
 document
     .getElementById(
@@ -1742,6 +2807,7 @@ document
     .addEventListener(
         "click",
         event => {
+
             if (
                 event.target.id ===
                 "modalClasificar"
@@ -1751,6 +2817,10 @@ document
         }
     );
 
+// =====================================================
+// CERRAR MODAL ACCESO MANUAL
+// =====================================================
+
 document
     .getElementById(
         "modalAccesoManual"
@@ -1758,6 +2828,7 @@ document
     .addEventListener(
         "click",
         event => {
+
             if (
                 event.target.id ===
                 "modalAccesoManual"
@@ -1767,24 +2838,71 @@ document
         }
     );
 
+// =====================================================
+// CERRAR MODAL BARRERA
+// =====================================================
+
+document
+    .getElementById(
+        "modalControlBarrera"
+    )
+    .addEventListener(
+        "click",
+        event => {
+
+            if (
+                event.target.id ===
+                "modalControlBarrera"
+            ) {
+                cerrarModalControlBarrera();
+            }
+        }
+    );
+
+// =====================================================
+// ESCAPE
+// =====================================================
+
 document.addEventListener(
     "keydown",
     event => {
-        if (event.key === "Escape") {
+
+        if (
+            event.key ===
+            "Escape"
+        ) {
             cerrarModalClasificar();
+
             cerrarModalAccesoManual();
+
+            cerrarModalControlBarrera();
         }
     }
 );
 
-// Actualizar cada 3 segundos
+// =====================================================
+// ACTUALIZACIONES PERIÓDICAS
+// =====================================================
+
+// Logs cada 3 segundos
 setInterval(
     cargarDatos,
     3000
 );
 
-// Primera carga
+// Estado barrera cada 3 segundos
+setInterval(
+    cargarEstadoBarrera,
+    3000
+);
+
+// =====================================================
+// PRIMERA CARGA
+// =====================================================
+
 cargarDatos();
+
+cargarEstadoBarrera();
 
 </script>
 

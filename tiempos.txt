@@ -19,3 +19,5 @@
 2026-08-08 20:46:51 | Captura/subida: 1.784 s | OCR: 2.376 s | Total: 4.265 s | Resultado: NO_PLATE
 2026-08-08 20:47:18 | Captura/subida: 0.915 s | OCR: 2.067 s | Total: 3.092 s | Resultado: AABZ332
 2026-08-08 20:48:20 | Captura/subida: 0.872 s | OCR: 1.985 s | Total: 2.958 s | Resultado: AABZ332
+2026-08-12 22:00:38 | Captura/subida: 0.860 s | OCR: 4.604 s | Total: 5.583 s | Resultado: NO_PLATE
+2026-08-19 16:53:28 | Captura/subida: 0.641 s | OCR: 2.038 s | Total: 2.794 s | Resultado: ERROR_OCR

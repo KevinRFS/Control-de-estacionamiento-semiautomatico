@@ -263,3 +263,5 @@
 2026-08-08 20:46:51 - NO_PLATE | Imagen: capture_20260808_204647_193969_a48c41.jpg | OCR API: 2.372 s
 2026-08-08 20:47:18 - AABZ332 | Imagen: capture_20260808_204715_403157_83fd04.jpg | OCR API: 2.062 s
 2026-08-08 20:48:20 - AABZ332 | Imagen: capture_20260808_204817_466593_bf0b4b.jpg | OCR API: 1.983 s
+2026-08-12 22:00:38 - NO_PLATE | Imagen: capture_20260812_220032_593715_2c0c54.jpg | OCR API: 4.565 s
+2026-08-19 16:53:28 - ANPR SERVER ERROR | HTTP: 0 | CURL: Failed to connect to 127.0.0.1 port 5000 after 2035 ms: Couldn't connect to server | RESPONSE: 
